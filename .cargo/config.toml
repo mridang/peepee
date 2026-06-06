@@ -1,0 +1,22 @@
+# Reproducible-build settings shared by every cargo invocation in this repo.
+#
+# `--locked` everywhere means a checkout never silently re-resolves the
+# dependency graph; Cargo.lock is the single source of truth. `net.git-fetch
+# -with-cli` keeps fetches working behind corporate proxies/credential helpers.
+
+[build]
+# Embed nothing host-specific into the binary path table; keeps builds
+# byte-identical across machines. The first pair rewrites our own source dir
+# (the Docker build's WORKDIR), the second rewrites the cargo registry so
+# dependency paths baked into `file!()`/panic strings don't leak the absolute
+# CARGO_HOME of whichever machine compiled the crate.
+rustflags = [
+    "--remap-path-prefix", "/app=.",
+    "--remap-path-prefix", "/usr/local/cargo/registry=registry",
+]
+
+[net]
+git-fetch-with-cli = true
+
+[term]
+color = "always"

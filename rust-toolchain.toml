@@ -1,0 +1,7 @@
+# Pin the exact toolchain so local, CI, and the Docker build all compile with
+# the same compiler. Kept in step with the `rust:1.95-alpine` base image the
+# Dockerfile uses for release builds.
+[toolchain]
+channel = "1.95.0"
+components = ["rustfmt", "clippy"]
+profile = "minimal"

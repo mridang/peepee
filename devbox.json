@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.13.6/.schema/devbox.schema.json",
+  "packages": [
+    "rustup@1.27.1",
+    "libiconvReal@1.17",
+    "darwin.apple_sdk.frameworks.Security",
+    "darwin.apple_sdk.frameworks.SystemConfiguration",
+    "zig@0.13.0"
+  ],
+  "shell": {
+    "init_hook": [
+      "export RUSTUP_HOME=\"$PWD/.rustup\"",
+      "export CARGO_HOME=\"$PWD/.cargo\"",
+      "rustup show 2>/dev/null || true",
+      "rustup target add x86_64-unknown-linux-musl 2>/dev/null || true",
+      "cargo fetch 2>/dev/null || true"
+    ],
+    "scripts": {
+      "test": "cargo test --all-features --locked",
+      "lint": "cargo clippy --all-targets --all-features --locked -- -D warnings",
+      "format": "cargo fmt --all",
+      "build": "cargo build --release --bin peepee --target x86_64-unknown-linux-musl",
+      "docker-build": "mkdir -p dist && docker buildx bake",
+      "docker-build-local": "docker buildx bake local",
+      "docker-build-amd64": "docker buildx bake amd64",
+      "docker-build-arm64": "docker buildx bake arm64",
+      "docker-push": "docker buildx bake push",
+      "start": "cargo run --bin peepee",
+      "clean": "cargo clean"
+    }
+  }
+}
