@@ -39,7 +39,7 @@ target "_common" {
 
 # --- Release group: one compile, two outputs --------------------------------
 # `image` and `binaries` both build from the shared `builder` stage in the
-# Dockerfile, so buildkit compiles the crate once and feeds both targets.
+# Dockerfile, so buildkit compiles the workspace once and feeds both targets.
 # semantic-release-oci runs `docker buildx bake release` and injects the
 # resolved version tags into the `image` target via `--set image.tags=...`.
 

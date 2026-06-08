@@ -1,0 +1,18 @@
+[package]
+name = "peepee"
+version = "0.0.0"
+description = "A minimal single-file PICO HTTP proxy built on hyper"
+publish = false
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+homepage.workspace = true
+
+[[bin]]
+name = "peepee"
+path = "src/main.rs"
+
+[dependencies]
+hyper = { workspace = true }

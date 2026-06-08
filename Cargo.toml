@@ -1,23 +1,21 @@
-[package]
-name = "peepee"
-version = "0.0.0"
+[workspace]
+members = [
+    "crates/peepee",
+]
+resolver = "2"
+
+[workspace.package]
 edition = "2021"
 rust-version = "1.75"
 license = "Apache-2.0"
 repository = "https://github.com/mridang/peepee"
 authors = ["Mridang Agarwalla <mridang.agarwalla@gmail.com>"]
 homepage = "https://github.com/mridang/peepee"
-description = "A minimal single-file PICO HTTP proxy built on hyper"
-publish = false
 
-[[bin]]
-name = "peepee"
-path = "src/main.rs"
-
-[dependencies]
+[workspace.dependencies]
 # hyper is the only dependency for now. The features cover what a forward proxy
-# needs — HTTP/1, the server side, and the client side. You'll add an async
-# runtime (e.g. tokio) and any glue crates yourself as you build it out.
+# needs — HTTP/1, the server side, and the client side. An async runtime
+# (e.g. tokio) and any glue crates get added as the proxy is built out.
 hyper = { version = "1", features = ["http1", "client", "server"] }
 
 [profile.release]

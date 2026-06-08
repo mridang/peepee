@@ -1,0 +1,7 @@
+# Advisory ignores for `cargo audit` (discovered automatically by the
+# rustsec/audit-check action). peepee currently accepts no advisories — the
+# list is intentionally empty. If a transitive advisory ever has to be tolerated
+# in-band, add its RUSTSEC id here with a comment explaining the rationale,
+# rather than masking it silently.
+[advisories]
+ignore = []

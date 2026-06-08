@@ -6,6 +6,7 @@ target/
 .devbox
 .rustup
 /.cargo/*
+!/.cargo/audit.toml
 !/.cargo/config.toml
 dist/
 *.swp
